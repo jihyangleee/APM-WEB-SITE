@@ -30,7 +30,3 @@ CREATE TABLE IF NOT EXISTS `posts` (
 CREATE INDEX idx_posts_userid ON posts(userid);
 CREATE INDEX idx_posts_created_at ON posts(created_at);
 
--- 테스트용 샘플 데이터 (선택사항 - 필요시 주석 해제)
--- INSERT INTO `users` (`userid`, `password`, `nickname`) VALUES 
--- ('testuser', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '테스트유저');
--- 기본 비밀번호: password
