@@ -1,0 +1,76 @@
+# Time->Tech Blog - Docker Compose Configuration
+# 사용법: docker-compose up -d
+
+version: '3.8'
+
+services:
+  # PHP + Apache 웹 서버
+  web:
+    build: .
+    container_name: timetech-web
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./uploads:/var/www/html/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_HOST=db
+      - DB_USER=${DB_USER:-root}
+      - DB_PASS=${DB_PASS:-secret}
+      - DB_NAME=${DB_NAME:-users}
+    networks:
+      - timetech-network
+    restart: unless-stopped
+
+  # MySQL 데이터베이스
+  db:
+    image: mysql:8.0
+    container_name: timetech-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASS:-secret}
+      MYSQL_DATABASE: ${DB_NAME:-users}
+      MYSQL_CHARACTER_SET_SERVER: utf8mb4
+      MYSQL_COLLATION_SERVER: utf8mb4_unicode_ci
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_PASS:-secret}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - timetech-network
+    restart: unless-stopped
+
+  # phpMyAdmin (선택사항 - 개발용)
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: timetech-pma
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: ${DB_PASS:-secret}
+    depends_on:
+      - db
+    networks:
+      - timetech-network
+    restart: unless-stopped
+    profiles:
+      - dev
+
+networks:
+  timetech-network:
+    driver: bridge
+
+volumes:
+  db_data:
+    driver: local

@@ -12,7 +12,7 @@ $id=isset($_POST['id'])?(int)$_POST['id'] : 0;
 // 파일 업로드 처리 + db에 filename 항목 추가 
 $uploadedFileName = '';
 if(isset($_FILES['userfile']) && $_FILES['userfile']['error'] === UPLOAD_ERR_OK){
-    $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/tmp/';
+    $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/uploads/';
     
     // 업로드 디렉토리가 없으면 생성
     if(!is_dir($uploaddir)){
@@ -80,7 +80,7 @@ if($id > 0){
   $affected = $stmt->affected_rows;
   $stmt->close();
   if($ok || $affected >0 ){
-    echo "<script>location.href='/view_post.php?id=".$id."';</script>";
+    echo "<script>location.href='/pages/post/view_post.php?id=".$id."';</script>";
     exit;
   }else{
     echo"<script>alert('수정권한이 없거나 변경사항이 없다');history.back();</script>";
@@ -94,7 +94,7 @@ if($id > 0){
   $newId= $stmt->insert_id;
   $stmt->close();
   if($ok>0){
-    echo"<script>location.href='/view_post.php?id=".$newId."';</script>";
+    echo"<script>location.href='/pages/post/view_post.php?id=".$newId."';</script>";
     exit;
   }
   else{

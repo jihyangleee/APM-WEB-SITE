@@ -35,7 +35,7 @@ if ($stmt) {
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="/css/style.css">
+      <link rel="stylesheet" href="/assets/css/style.css">
     </head>
 	<body>
 		<h1 class="brand-title"><b>T</b>ime<b>-><b>T</b>ech</h1>
@@ -62,13 +62,13 @@ if ($stmt) {
            글 등록
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/post.php">등록</a></li>
-            <li><a class="dropdown-item" href="/view_post.php">내 글</a></li>
+            <li><a class="dropdown-item" href="/pages/post/post.php">등록</a></li>
+            <li><a class="dropdown-item" href="/pages/post/view_post.php">내 글</a></li>
           </ul>
         </li>
       
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page"  href="/mypage.php">마이페이지</a>
+        <a class="nav-link active" aria-current="page"  href="/pages/user/mypage.php">마이페이지</a>
 </li>
       </ul>
     </div>
@@ -98,7 +98,7 @@ if ($stmt) {
                     <th scope="row"><?php echo $i++;?></th>
                     <td><?php echo htmlspecialchars($r->userid);?></td>   <!-- 이름 -->
                     <!-- xss 방지 htmlspecialchars  -->
-                    <td><a href="/read_post.php?id=<?php echo (int)$r->id;?>"><?php echo htmlspecialchars($r->title);?></a></td> <!--제목-->
+                    <td><a href="/pages/post/read_post.php?id=<?php echo (int)$r->id;?>"><?php echo htmlspecialchars($r->title);?></a></td> <!--제목-->
                     <td><?php echo $r->regdate;?></td>
                 </tr>
               <?php endforeach; ?>
@@ -109,12 +109,12 @@ if ($stmt) {
         <div class="container auth-section">
         <?php 
                 if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])){
-        echo"<a href=\"login.php\" class=\"login-btn\"><span>로그인</span></a>";}
+        echo"<a href=\"/pages/auth/login.php\" class=\"login-btn\"><span>로그인</span></a>";}
         else{
             $user_id = $_SESSION['user_id'];
             $user_name= $_SESSION['user_name'];
             echo"<div class=\"user-info\"><strong>$user_name</strong><span class=\"user-id\">$user_id</span>";
-            echo"<a href='logout.php' class=\"logout-link\">로그아웃</a></div>";
+            echo"<a href='/pages/auth/logout.php' class=\"logout-link\">로그아웃</a></div>";
         }
     ?>
         </div>

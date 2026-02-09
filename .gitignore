@@ -1,2 +1,20 @@
+# 환경 설정 파일
+.env
+.env.local
 inc/dbcon.php
+
+# 업로드 폴더 (파일은 무시, 폴더 구조는 유지)
+uploads/*
+!uploads/.gitkeep
+
+# 기존 tmp 폴더
 tmp/
+
+# IDE
+.vscode/
+*.code-workspace
+.idea/
+
+# OS 파일
+.DS_Store
+Thumbs.db

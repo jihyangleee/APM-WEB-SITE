@@ -31,7 +31,7 @@
 			// // 자동 로그인 처리
 			// $_SESSION['user_id'] = $username;
 			// $_SESSION['user_name'] = $nickname;
-			header('Location:register_ok.php');
+			header('Location:/pages/auth/register_ok.php');
 			exit;
 		}
 		mysqli_close($mysqli);
@@ -45,7 +45,7 @@
 	</head>
 <body>
 	<h1>회원가입</h1>
-	<form action="register.php" method="POST">
+	<form action="/pages/auth/register.php" method="POST">
 	<p><input type="text" name="username" placeholder="사용자 ID"required></p>
 	<p><input type="password" name="password" placeholder="비밀번호"required></p>
 	<p><input type="password" name="password_confirm" placeholder="비밀번호 확인"required></p>

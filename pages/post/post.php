@@ -20,7 +20,7 @@ if($id){
 
 
 ?>
-<form method="post" action="/post_ok.php" enctype="multipart/form-data">
+<form method="post" action="/pages/post/post_ok.php" enctype="multipart/form-data">
     en
     <input type="hidden" name="id" value ="<?php echo htmlspecialchars($id);?>">
     <div class="mb-3">

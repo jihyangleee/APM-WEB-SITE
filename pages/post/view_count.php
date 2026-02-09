@@ -2,7 +2,7 @@
 session_start();
 header('Content-Type: application/json; charset=utf-8');
 
-require_once __DIR__.'/inc/dbcon.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/inc/dbcon.php';
 
 // Accept id from POST or GET
 $id = 0;

@@ -3,7 +3,7 @@ include $_SERVER['DOCUMENT_ROOT']."/inc/dbcon.php";
 
 // 로그인 체크
 if (!isset($_SESSION['user_id'])) {
-    echo "<script>alert('로그인이 필요합니다.');location.href='/login.php';</script>";
+    echo "<script>alert('로그인이 필요합니다.');location.href='/pages/auth/login.php';</script>";
     exit;
 }
 

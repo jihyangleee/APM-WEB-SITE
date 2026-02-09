@@ -2,7 +2,7 @@
 
 // GET 파라미터로 파일명 받기
 $filename = isset($_GET['file']) ? basename($_GET['file']) : '';
-$filepath = $_SERVER['DOCUMENT_ROOT'] . '/tmp/' . $filename;
+$filepath = $_SERVER['DOCUMENT_ROOT'] . '/uploads/' . $filename;
 
 // 파일 존재 확인
 if($filename === '' || !file_exists($filepath)){

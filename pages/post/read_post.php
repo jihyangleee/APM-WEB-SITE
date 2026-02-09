@@ -39,7 +39,7 @@ $isAuthor = isset($_SESSION['user_id']) && $_SESSION['user_id'] === $rs->userid;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
     <div class="container container-post">
@@ -57,7 +57,7 @@ $isAuthor = isset($_SESSION['user_id']) && $_SESSION['user_id'] === $rs->userid;
             <?php if(!empty($rs->filename)): ?>
             <p> 
                 <strong>첨부파일:</strong>
-                <a href="/download.php?file=<?php echo urlencode($rs->filenamt); ?>"> <?php echo htmlspecialchars($rs->filename);?></a>
+                <a href="/pages/post/download.php?file=<?php echo urlencode($rs->filenamt); ?>"> <?php echo htmlspecialchars($rs->filename);?></a>
             </p>
             <?php endif;?>
 
@@ -66,9 +66,9 @@ $isAuthor = isset($_SESSION['user_id']) && $_SESSION['user_id'] === $rs->userid;
             <nav class="blog-pagination" aria-label="Pagination">
                 <a class="btn btn-outline-secondary" href="/recent_blog.php">목록</a>
                 <?php if ($isAuthor): ?>
-                <a class="btn btn-outline-secondary" href="/reply.php?id=<?php echo $rs->id; ?>">답글</a>
-                <a class="btn btn-outline-secondary" href="/post.php?id=<?php echo $rs->id; ?>">수정</a>
-                <a class="btn btn-outline-secondary" href="/delete.php?id=<?php echo $rs->id; ?>">삭제</a>
+                <a class="btn btn-outline-secondary" href="/pages/post/reply.php?id=<?php echo $rs->id; ?>">답글</a>
+                <a class="btn btn-outline-secondary" href="/pages/post/post.php?id=<?php echo $rs->id; ?>">수정</a>
+                <a class="btn btn-outline-secondary" href="/pages/post/delete.php?id=<?php echo $rs->id; ?>">삭제</a>
                 <?php endif; ?>
             </nav>
         </article>

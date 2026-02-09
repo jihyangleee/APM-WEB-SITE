@@ -1,0 +1,25 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+*.code-workspace
+.idea
+
+# Docker
+docker-compose*.yml
+Dockerfile
+.dockerignore
+
+# 환경 파일
+.env
+.env.local
+
+# 업로드된 파일 (볼륨으로 마운트)
+uploads/*
+!uploads/.gitkeep
+
+# 기타
+README.md
+*.md

@@ -1,0 +1,25 @@
+<?php
+/**
+ * 데이터베이스 연결 설정
+ * 이 파일을 dbcon.php로 복사한 후 값을 수정하세요
+ * cp dbcon.php.example dbcon.php
+ */
+
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
+// 환경변수 또는 기본값 사용
+$dbHost = getenv('DB_HOST') ?: 'db';
+$dbUser = getenv('DB_USER') ?: 'root';
+$dbPass = getenv('DB_PASS') ?: 'secret';
+$dbName = getenv('DB_NAME') ?: 'users';
+
+$mysqli = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
+
+if ($mysqli->connect_errno) {
+    die('Connect_Error: ' . $mysqli->connect_error);
+}
+
+// UTF-8 설정
+$mysqli->set_charset("utf8mb4");
+?>

@@ -5,7 +5,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/inc/dbcon.php";
 	if(!isset($_POST['user_id']) || !isset($_POST['user_pw'])){
 		header("Content-Type: text/html; charset=UTF-8");
 		echo"<script>alert('아이디 또는 비밀번호가 빠졌거나 잘못된 접근입니다.');";
-		echo "window.location.replace('login.php');</script>";
+		echo "window.location.replace('/pages/auth/login.php');</script>";
 		exit;
 
 	}
@@ -23,13 +23,13 @@ include $_SERVER["DOCUMENT_ROOT"]."/inc/dbcon.php";
 			$_SESSION['user_id'] = $user_id;
 			$_SESSION['user_name'] = $row['nickname'];
 			
-			header("Location: index.php");
+			header("Location: /index.php");
 			exit;
 		}else{// 인증실패
 			
 			header("Content-Type: text/html; charset=UTF-8");
 			echo"<script>alert('아이디 또는 비밀번호가 잘못되었습니다.');";
-			echo"window.location.replace('login.php');</script>";
+			echo"window.location.replace('/pages/auth/login.php');</script>";
 			exit;
 		}}
 	
@@ -38,7 +38,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/inc/dbcon.php";
 		
 		header("Content-Type: text/html; charset=UTF-8");
 		echo"<script>alert('아이디 혹은 비밀번호가 잘못되었습니다.');";
-		echo"window.location.replace('login.php');</script>";
+		echo"window.location.replace('/pages/auth/login.php');</script>";
 		exit;
 	}
 	$mysqli->close();?>

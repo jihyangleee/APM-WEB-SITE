@@ -1,0 +1,2 @@
+# db 폴더 웹 접근 차단
+Deny from all
